@@ -1,12 +1,11 @@
-<div class="panel panel-primary">
-  <a class="nav-link"  routerLink="/medicine-volunteer" style="position: absolute;
-  right: 0;">Medicine-volunteer</a>
+<div class="xyz">
+  <a class="nav-link"  routerLink="/medicine-volunteer" >Medical-volunteer</a>
   </div>
   
 
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h2>Medicine List</h2>
+      <h2>Medicines</h2>
       
     </div>
     <div class="panel-body">
@@ -17,6 +16,7 @@
             <th>Quantity Available</th>
             <th>Price</th>
             <th>category</th>
+            <th>Quantity</th>
           </tr>
         </thead>
         <tbody>
@@ -25,12 +25,13 @@
             <td>{{Medicine.qnt}}</td>
             <td>{{Medicine.price}}</td>
             <td>{{Medicine.category}}</td>
-            <td><input type="text" class="form-control" id="Quantity" required [(ngModel)]="Medicine.qnt" name="Quantity">
-              <button (click)="buyMedicine(Medicine.mid,Medicine.qnt)" class="btn btn-submit">Buy Now</button>
+            <td><input type="number" class="form-control" id="Quantity"  name="Quantity">
+                <button (click)="buyMedicine(Medicine.mid)"  class="btn btn-info">Buy Now</button>
                 <button  class="btn btn-info" style="margin-left: 10px">Add to cart</button>
                 
             </td>
           </tr>
+          
         </tbody>
       </table>
     </div>

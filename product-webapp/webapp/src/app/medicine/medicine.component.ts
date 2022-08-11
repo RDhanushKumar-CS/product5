@@ -11,14 +11,12 @@ import { Router } from '@angular/router';
 })
 export class medicineComponent implements OnInit {
 
+  
   Medicines!: Observable<Medicine[]>; 
   constructor(private MedicineService: MedicineService,private router: Router) { }
 
   ngOnInit(): void {
-    // this.MedicineService.getMedicines().subscribe((data: Medicine[]) => {
-    //   console.log(data);
-    //   this.Medicines = data;
-    // });
+   
     this.reloadData();
   }
   
@@ -31,12 +29,17 @@ export class medicineComponent implements OnInit {
     this.Medicines = this.MedicineService.getMedicinesList();
   }
 
-  buyMedicine(id: number,qnt:number) {
+  buyMedicine(id: number) {
+    let qnt = document.querySelector('input')?.value;
+    console.log(qnt)
     this.MedicineService.buyMedicine(id,qnt)
-      
+   
+  }
   }
 
   
 
   
-}
+
+
+
