@@ -1,36 +1,21 @@
 
 
-  <div class="container">
+  <div class="container"  >
 
-    <div class="content3">
-        <table>
-            <thead>
-                <h4>Pre-Existing Medical Conditions</h4>
-            </thead>
-            <tbody>
-                
-                    <tr>Cholestrol</tr>
-                    <tr>Diabetes</tr>
-                    <tr>High blood pressure</tr>
-                    <tr>Hypertension</tr>
-                    <tr>Arthritis</tr>
-            </tbody>
-        </table>
+    
 
-    </div>
-
-    <div class="content1">
+    <div class="content1" *ngFor="let Volunteer of Volunteers |async">
         <table>
             <tbody>
                 <tr>
                     <th>Name</th>
                     <td width="50px" style="text-align: center"> : </td>
-                    <td>Karthika</td>
+                    <td>{{Volunteer.vname}}</td>
                   </tr>
                   <tr>
-                    <th>DOB</th>
+                    <th>Mobile NO</th>
                     <td width="50px" style="text-align: center"> : </td>
-                    <td>15-05-2000</td>
+                    <td>{{Volunteer.vmobile}}</td>
                   </tr>
                   <tr>
                     <th>Gender</th>
@@ -38,7 +23,7 @@
                     <td>Female</td>
                   </tr>
                   <tr>
-                    <th>Medical record</th>
+                    <th>Medical Lisence</th>
                     <td width="50px" style="text-align: center">:</td>
                     <td></td>
                   </tr>

@@ -8,45 +8,33 @@ import { RegisterComponentComponent } from './register-component/register-compon
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import * as $ from 'jquery'
+// import * as $ from 'jquery';
 import { VolunteerProfileComponent } from './volunteer-profile/volunteer-profile.component';
-
 import { PatientComponentComponent } from './patient-component/patient-component.component';
-import { HttpClientModule,HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { medicineComponent } from './medicine/medicine.component';
-
 import { VolunteerComponent } from './medicine/volunteer/volunteer.component';
 import { UpdateComponent } from './medicine/volunteer/update/update.component';
-
 import { HomeComponent } from './home/home.component';
 import { PatientComponent } from './consultation/patient/patient.component';
 import { AddnewComponent } from './medicine/volunteer/addnew/addnew.component';
-
-
-
-
+import { SearchPipe } from './search.pipe';
+import { VolunteerDisplayComponent } from './volunteer-profile/volunteer-display/volunteer-display.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponentComponent,
     RegisterComponentComponent,
-    PatientComponentComponent,
+    PatientComponent,
     medicineComponent,
     VolunteerComponent,
     UpdateComponent,
-
-   
-   
-  
-
     VolunteerProfileComponent,
-    medicineComponent,
-    PatientComponentComponent,
     HomeComponent,
-    PatientComponent,
+    PatientComponentComponent,
     AddnewComponent,
-
-
+    SearchPipe,
+    VolunteerDisplayComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,24 +42,10 @@ import { AddnewComponent } from './medicine/volunteer/addnew/addnew.component';
     RouterModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule,
     FormsModule,
-
-
-
-    ReactiveFormsModule,  
-    HttpClientModule,
-
     ReactiveFormsModule,
-
-
-    ReactiveFormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-
-
   ],
-  providers: [HttpClientModule,HttpClient],
+  providers: [HttpClientModule, HttpClient],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

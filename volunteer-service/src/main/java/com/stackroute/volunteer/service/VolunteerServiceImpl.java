@@ -1,6 +1,7 @@
 package com.stackroute.volunteer.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,12 @@ public class VolunteerServiceImpl implements VolunteerService{
 	@Override
 	public Volunteer addNew(Volunteer emp) {
 		
-		return null;
+		Optional<Volunteer> Medicine = repo.findById(0);
+		if (Medicine.isPresent()) {
+			System.out.println("Duplicate");
+			return null;
+		} else {
+			return repo.save(emp);
+		}
 	}
 }

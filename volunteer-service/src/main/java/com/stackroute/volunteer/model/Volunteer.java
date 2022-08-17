@@ -1,11 +1,13 @@
 package com.stackroute.volunteer.model;
 
+import javax.annotation.Generated;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("volunteer")
 public class Volunteer {
 
-
+	
 private String Vname;
 private long vmobile;
 private String city;
