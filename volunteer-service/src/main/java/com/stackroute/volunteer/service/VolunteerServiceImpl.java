@@ -42,4 +42,17 @@ public class VolunteerServiceImpl implements VolunteerService{
 			return repo.save(emp);
 		}
 	}
+
+	@Override
+	public Volunteer getById(int id) {
+		Optional<Volunteer> Volunteer = repo.findById(id);
+		if (Volunteer.isPresent()) {
+			
+			return Volunteer.get();
+		} else {
+			
+			System.out.println("not found");
+			return null;
+		}
+	}
 }

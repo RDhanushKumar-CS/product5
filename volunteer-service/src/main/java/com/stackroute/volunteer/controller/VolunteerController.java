@@ -25,7 +25,7 @@ import com.stackroute.volunteer.service.VolunteerService;
 @RequestMapping("api/")
 public class VolunteerController {
 	@Autowired
-    private VolunteerRepository VolunteerRepository;
+    private VolunteerRepository VolunteerRepo;
  	
  	@Autowired
     private VolunteerService VolunteerService;
@@ -40,19 +40,35 @@ public class VolunteerController {
  	
  	  @GetMapping("Volunteer")
 	    public List < Volunteer > getMedicine() {
-	    	System.out.println(this.VolunteerRepository.findAll());
-	        return this.VolunteerRepository.findAll();
+	    	System.out.println(this.VolunteerRepo.findAll());
+	        return this.VolunteerRepo.findAll();
 	    }
+ 	  
+ 	 @GetMapping("Volunteer/{id}")
+		public ResponseEntity<Volunteer> getVolunteerById(@PathVariable(value = "id") int id)
+				throws ResourceNotFoundException {
+// 		 System.out.println(id);
+ 		 
+ 		Volunteer Volunteer = VolunteerRepo.findById(id)
+					.orElseThrow(() -> new ResourceNotFoundException("Volunteer not found for this id :: " + id));
+			return ResponseEntity.ok().body(Volunteer);
+		}
 	
  	
  	@PutMapping("Volunteer/{id}")
 		public ResponseEntity<Volunteer> updateVolunteer(@PathVariable(value = "id") int Id,@Validated @RequestBody Volunteer VolunteerDetails) throws ResourceNotFoundException {
-    	Volunteer Volunteer = VolunteerRepository.findById(Id)
+    	Volunteer Volunteer = VolunteerRepo.findById(Id)
 					.orElseThrow(() -> new ResourceNotFoundException("Medicine not found for this id :: " + Id));
 
     	Volunteer.setAddress(VolunteerDetails.getAddress());
     	Volunteer.setCity(VolunteerDetails.getCity());
-			final Volunteer updatedVolunteer = VolunteerRepository.save(Volunteer);
+    	Volunteer.setState(VolunteerDetails.getState());
+    	Volunteer.setZipcode(VolunteerDetails.getZipcode());
+    	Volunteer.setVmobile(VolunteerDetails.getVmobile());
+    	Volunteer.setVname(VolunteerDetails.getVname());
+    	Volunteer.setvemail(VolunteerDetails.getvemail());
+    	
+			final Volunteer updatedVolunteer = VolunteerRepo.save(Volunteer);
 			return ResponseEntity.ok(updatedVolunteer);
 		}
  	@PostMapping("Volunteer")

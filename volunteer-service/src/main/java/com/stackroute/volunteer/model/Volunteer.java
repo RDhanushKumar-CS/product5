@@ -2,28 +2,41 @@ package com.stackroute.volunteer.model;
 
 import javax.annotation.Generated;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("volunteer")
 public class Volunteer {
 
-	
+@Id
+private int vid;	
+
 private String Vname;
 private long vmobile;
 private String city;
 private String state;
 private String address;
 private int zipcode;
+private String vemail;
 
-public Volunteer(String vname, long vmobile, String city, String state, String address, int zipcode) {
+public Volunteer(int vid, String vname, long vmobile, String city, String state, String address, int zipcode ,String vemail) {
 	super();
+	this.vid = vid;
 	Vname = vname;
 	this.vmobile = vmobile;
 	this.city = city;
 	this.state = state;
 	this.address = address;
 	this.zipcode = zipcode;
+	this.vemail = vemail;
 }
+public int getVid() {
+	return vid;
+}
+public void setVid(int vid) {
+	this.vid = vid;
+}
+
 public Volunteer() {
 	super();
 	
@@ -34,6 +47,13 @@ public String getVname() {
 public void setVname(String vname) {
 	Vname = vname;
 }
+public String getvemail() {
+	return vemail;
+}
+public void setvemail(String vemail) {
+	vemail = vemail;
+}
+
 public long getVmobile() {
 	return vmobile;
 }

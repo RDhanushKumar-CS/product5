@@ -26,8 +26,8 @@ export class VolunteerDisplayComponent implements OnInit {
   reloadData() {
     this.Volunteers = this.VolunteerService.getVolunteers();
   }
-  UpdateProfile():void{
+  UpdateProfile(id: number):void{
    
-    this.router.navigate(['update-volunteer']);
+    this.router.navigate(['update-volunteer',id]);
   }
 }

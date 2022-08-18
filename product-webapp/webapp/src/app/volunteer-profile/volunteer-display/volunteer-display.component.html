@@ -1,11 +1,11 @@
 
 
-  <div class="container"  >
+  <div class="container" *ngFor="let Volunteer of Volunteers |async" >
 
     
 
-    <div class="content1" *ngFor="let Volunteer of Volunteers |async">
-        <table>
+    <div class="content1" >
+        <table >
             <tbody>
                 <tr>
                     <th>Name</th>
@@ -20,7 +20,7 @@
                   <tr>
                     <th>Gender</th>
                     <td width="50px" style="text-align: center"> : </td>
-                    <td>Female</td>
+                    <td>Male</td>
                   </tr>
                   <tr>
                     <th>Medical Lisence</th>
@@ -63,7 +63,7 @@
                   </tr><br>
                   <tr>
                     
-                    <td><button class="btn btn-primary" (click)="UpdateProfile()">Update</button></td>
+                    <td><button class="btn btn-primary" (click)="UpdateProfile(Volunteer.vid)">Update</button></td>
                     
                   </tr>
                 </tbody>
