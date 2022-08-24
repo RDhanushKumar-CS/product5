@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Volunteer } from '../volunteer';
 import { VolunteerService } from '../volunteer.service';
+import { User } from 'src/app/user';
 @Component({
   selector: 'app-volunteer-display',
   templateUrl: './volunteer-display.component.html',
@@ -10,10 +11,15 @@ import { VolunteerService } from '../volunteer.service';
 })
 export class VolunteerDisplayComponent implements OnInit {
 
+   id =Number(localStorage.getItem("lid"))
+   img = "http://localhost:8081/api/Volunteer/image/"+this.id;
   searchText: string = '';
-  Volunteers!: Observable<Volunteer[]>;
-  volunteer: Volunteer = new Volunteer();
-
+  Volunteers: any[]=[]
+  volunteer= new Volunteer();
+  // volunteer:object = new Volunteer()
+ 
+  
+  
   constructor(
     private VolunteerService: VolunteerService,
     private router: Router
@@ -24,7 +30,21 @@ export class VolunteerDisplayComponent implements OnInit {
   }
 
   reloadData() {
-    this.Volunteers = this.VolunteerService.getVolunteers();
+    
+    
+     this.VolunteerService.getVolunteer(this.id).subscribe(
+      data=>{
+        this.Volunteers.push(data);
+        
+      }
+    );
+    this.VolunteerService.getimage(this.id).subscribe(
+      data=>{
+        this.Volunteers.push(data);
+        
+      }
+    );
+   
   }
   UpdateProfile(id: number):void{
    
